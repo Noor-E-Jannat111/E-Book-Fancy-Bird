@@ -1,27 +1,37 @@
-import React, { useState } from 'react';
-import * as Font from 'expo-font';
-import { AppLoading } from 'expo';
-import Navigator from './Src/Routes/drawer';
+import React from 'react';
+import { createAppContainer } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
-const getFonts = () => Font.loadAsync({
-  'nunito-regular': require('./Src/assets/fonts/Nunito-Regular.ttf'),
-  'nunito-bold': require('./Src/assets/fonts/Nunito-Bold.ttf'),
+import { Dimensions } from 'react-native';
+import { Feather } from '@expo/vector-icons';
+import {
+  ProfileScreen, 
+  MessageScreen,
+  ActivityScreen,
+  ListScreen,
+} from './screens';
+
+const DrawerNavigator = createDrawerNavigator({
+  ProfileScreen: {
+    screen: ProfileScreen
+  },
+  MessageScreen: {
+    screen: MessageScreen
+  },
+  ActivityScreen: {
+    screen: ActivityScreen
+  },
+  ListScreen: {
+    screen: ListScreen
+  },
+  // {
+  //   drawerWidth: Dimensions.get("window").width *0.85,
+  //   hideStatusBar: true,
+
+  //   contentOptions: {
+  //     activeBackgroundColor: "rgba(212,118,207,0.2)",
+  //   }
+  // }
 });
 
-export default function App() {
-  const [fontsLoaded, setFontsLoaded] = useState(false);
-
-  if (fontsLoaded) {
-    return (
-      <Navigator />
-    );
-  } else {
-    return (
-      <AppLoading 
-        startAsync={getFonts} 
-        onFinish={() => setFontsLoaded(true)} 
-      />
-    )
-  }
-
-}
+export default createAppContainer(DrawerNavigator);
