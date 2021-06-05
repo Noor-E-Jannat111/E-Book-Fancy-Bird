@@ -12,7 +12,7 @@ import {
 
 export default function Pigeon() {
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView>
       <ScrollView>
         <Image
           style={styles.image}

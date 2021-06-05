@@ -16,14 +16,14 @@ function HomeScreen(props) {
       <Text style={styles.smallText}>How to Take care your</Text>
       <Text style={styles.bigText}>FANCY BIRD</Text>
 
-      <View style={styles.homeFooter}>
+      {/* <View style={styles.homeFooter}>
         <View style={styles.birdListBtn}>
           <Text style={styles.btnText}>Birds List</Text>
         </View>
         <View style={styles.aboutBtn}>
           <Text style={styles.btnText}>About App</Text>
         </View>
-      </View>
+      </View> */}
     </ImageBackground>
   );
 }
