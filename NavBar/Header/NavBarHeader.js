@@ -15,13 +15,6 @@ import MyDrawer from "../DrawerNavbar/DrawerNavBar";
 const NavBarHeader = () => {
   return (
     <Container>
-      <Header>
-        <Body>
-          <Title style={{ textAlign: "center", width: "100%" }}>
-            Native-E-Book
-          </Title>
-        </Body>
-      </Header>
       <NavigationContainer>
         <MyDrawer />
       </NavigationContainer>

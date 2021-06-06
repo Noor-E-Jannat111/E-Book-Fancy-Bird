@@ -27,10 +27,6 @@ function CustomDrawerContent(props) {
   return (
     <DrawerContentScrollView {...props}>
       <DrawerItemList {...props} />
-      <DrawerItem
-        label="Toggle Menu"
-        onPress={() => props.navigation.toggleDrawer()}
-      ></DrawerItem>
     </DrawerContentScrollView>
   );
 }

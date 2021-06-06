@@ -1,7 +1,24 @@
 import React from "react";
-import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
-
-function HomeScreen(props) {
+import {
+  Image,
+  ImageBackground,
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  SafeAreaView,
+  Platform,
+  StatusBar,
+} from "react-native";
+import { NavigationContainer, DrawerActions } from "@react-navigation/native";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from "@react-navigation/drawer";
+import { Icon } from "native-base";
+function HomeScreen({ navigation }) {
   return (
     <ImageBackground
       style={styles.background}
@@ -15,20 +32,20 @@ function HomeScreen(props) {
       <Text style={styles.bigText}>E-BooK</Text>
       <Text style={styles.smallText}>How to Take care your</Text>
       <Text style={styles.bigText}>FANCY BIRD</Text>
-
-      {/* <View style={styles.homeFooter}>
-        <View style={styles.birdListBtn}>
-          <Text style={styles.btnText}>Birds List</Text>
-        </View>
-        <View style={styles.aboutBtn}>
-          <Text style={styles.btnText}>About App</Text>
-        </View>
-      </View> */}
+      <Text
+        style={styles.btn}
+        onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
+      >
+        <Icon name="ios-menu" style={{ fontSize: 30, color: "white" }} />
+      </Text>
     </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
+  safeArea: {
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+  },
   background: {
     flex: 1,
     alignItems: "center",
@@ -66,6 +83,17 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     textAlign: "center",
     padding: 15,
+  },
+  btn: {
+    position: "absolute",
+    top: 30,
+    right: 0,
+    backgroundColor: "#007aa3",
+    zIndex: 999999,
+    color: "white",
+    textAlign: "center",
+    borderRadius: 5,
+    padding: 10,
   },
 });
 

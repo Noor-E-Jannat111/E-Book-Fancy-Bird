@@ -9,11 +9,25 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
+import { NavigationContainer, DrawerActions } from "@react-navigation/native";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from "@react-navigation/drawer";
+import { Icon } from "native-base";
 
-export default function Parrot() {
+export default function Parrot({ navigation }) {
   return (
     <SafeAreaView>
       <ScrollView>
+        <Text
+          style={styles.btn}
+          onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}
+        >
+          <Icon name="ios-menu" style={{ fontSize: 30, color: "white" }} />
+        </Text>
         <Image
           style={styles.image}
           source={require("../../assets/parrot.jpg")}
@@ -152,5 +166,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     padding: 20,
     fontStyle: "italic",
+  },
+  btn: {
+    position: "absolute",
+    top: 30,
+    right: 0,
+
+    backgroundColor: "#007aa3",
+    zIndex: 999999,
+    color: "white",
+    textAlign: "center",
+    borderRadius: 5,
+    padding: 10,
   },
 });
